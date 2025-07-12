@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="fallingrain.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #ffdde1, #ee9ca7);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #start-screen {
+      position: fixed;
+      inset: 0;
+      background: #000000e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    #start-btn {
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      background: #001aff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      transition: 0.3s;
+    }
+
+    #start-btn:hover {
+      background: #f2f2f2;
+    }
+
+    .main-photo-container {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .main-photo {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    p {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    .floating-face {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      opacity: 0.85;
+      pointer-events: none;
+      animation: floatRandom 10s infinite linear;
+    }
+
+    @keyframes floatRandom {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(40px, -30px); }
+      50% { transform: translate(-40px, 20px); }
+      75% { transform: translate(30px, 40px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkleFade 0.5s linear forwards;
+    }
+
+    @keyframes sparkleFade {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+
+    .fun-button, .typewriter-button {
+      position: fixed;
+      bottom: 20px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background: #fff;
+      color: #e91e63;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      margin: 5px;
+    }
+
+    .fun-button { right: 20px; }
+    .typewriter-button { right: 170px; }
+
+    #fun-popup, #typewriter-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: #000;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      font-size: 1.1rem;
+      z-index: 10001;
+      text-align: center;
+    }
+
+    #typewriter-text {
+      font-size: 1.2rem;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: riseBalloon 10s infinite ease-in;
+      z-index: 500;
+      opacity: 0.8;
+    }
+
+    @keyframes riseBalloon {
+      0% {
+        bottom: -60px;
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-30px);
+      }
+      100% {
+        bottom: 110vh;
+        transform: translateX(30px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="start-screen">
+    <button id="start-btn">For Bespren Princess! 🎵</button>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="Birthday.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="main-content" style="display: none;">
+    <div class="main-photo-container">
+      <img src="Bunso Image.jpg" alt="Birthday Girl" class="main-photo"/>
+      <h1>Happy Birthday, BESPREN PRINCESS!</h1>
+      <p>Maligayang kaarawan, Bespren! Sana ngayong birthday mo... mag-share ka naman ng cake... hindi lang ng chismis... 😜😜😜</p>
+    </div>
+
+    <div id="floating-faces-container">
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+      <img src="Floating 2.png" class="floating-face" />
+    </div>
+
+    <button class="typewriter-button" onclick="startTypewriter()">🖊️ Basahin Me</button>
+    <button class="fun-button" onclick="showFunPopup()">🎈 Pindut Me</button>
+  </div>
+
+  <div id="popup-message" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background:#fff;color:#000;padding:30px 50px;border-radius:12px;font-size:1.2rem;box-shadow:0 0 20px rgba(0,0,0,0.3);z-index:10000;">
+    OY, tumatanda kana Bespren! hahaha! 😆✌️
+  </div>
+
+  <div id="fun-popup">
+    Iyun Oh, Princess na Princess ah... hahaha...
+    <br> Happy Birthday Ulit Bunso, Mabuhay ka hangga't gusto mo😁😁😁
+    <br><br>
+    <img src="Second Image.jpg" width="300" style="border-radius: 50%;" />
+  </div>
+
+  <div id="typewriter-box">
+    <div id="typewriter-text"></div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("start-btn");
+    const startScreen = document.getElementById("start-screen");
+    const mainContent = document.getElementById("main-content");
+    const bgMusic = document.getElementById("bgMusic");
+    const popupMessage = document.getElementById("popup-message");
+    const funPopup = document.getElementById("fun-popup");
+    const typewriterBox = document.getElementById("typewriter-box");
+    const typewriterText = document.getElementById("typewriter-text");
+
+    startBtn.addEventListener("click", () => {
+      bgMusic.play();
+      startScreen.style.display = "none";
+      mainContent.style.display = "block";
+      popupMessage.style.display = "block";
+      setTimeout(() => popupMessage.style.display = "none", 5000);
+
+      document.addEventListener("mousemove", function(e) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.top = `${e.clientY}px`;
+        sparkle.style.left = `${e.clientX}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 500);
+      });
+
+      generateConfettiLoop();
+      randomizeFacesLoop();
+      generateBalloons();
+    });
+
+    function showFunPopup() {
+      funPopup.style.display = 'block';
+      setTimeout(() => funPopup.style.display = 'none', 5000);
+    }
+
+    function startTypewriter() {
+      const message = "Tutal, dahil Birthday mo, baka naman, libre mo na si Ate Mo, Cut muna tayo sa Allowance mo pang McDo.";
+      typewriterBox.style.display = 'block';
+      typewriterText.innerHTML = "";
+      let i = 0;
+      const speed = 50;
+      function type() {
+        if (i < message.length) {
+          typewriterText.innerHTML += message.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+      setTimeout(() => typewriterBox.style.display = 'none', 10000);
+    }
+
+    function generateConfettiLoop() {
+      setInterval(() => {
+        for (let i = 0; i < 5; i++) {
+          let confetti = document.createElement('div');
+          confetti.style.position = 'fixed';
+          confetti.style.width = '8px';
+          confetti.style.height = '8px';
+          confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+          confetti.style.top = '-10px';
+          confetti.style.left = `${Math.random()*100}%`;
+          confetti.style.animation = `fall ${Math.random()*3 + 2}s linear forwards`;
+          confetti.style.zIndex = '999';
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 5000);
+        }
+      }, 1000);
+    }
+
+    function randomizeFacesLoop() {
+      setInterval(() => {
+        const faces = document.querySelectorAll(".floating-face");
+        faces.forEach(face => {
+          face.style.left = `${Math.random() * 90 + 5}%`;
+          face.style.top = `${Math.random() * 90 + 5}%`;
+        });
+      }, 3000);
+    }
+
+    function generateBalloons() {
+      const colors = ['#ff4e50', '#f9d423', '#6a82fb', '#fc6076', '#7f00ff'];
+      const shapes = ['50% 50% 50% 50% / 60% 60% 40% 40%', '40% 40% 50% 50% / 50% 60% 60% 50%', '60% 60% 40% 40% / 50% 50% 60% 60%'];
+      setInterval(() => {
+        let balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = `${Math.random() * 100}%`;
+        balloon.style.bottom = "-60px";
+        balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 10000);
+      }, 800);
+    }
+  </script>
+
+  <style>
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</body>
+</html>
